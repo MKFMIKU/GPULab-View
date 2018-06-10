@@ -1,21 +1,24 @@
 import request from '@/utils/request'
+import querystring from 'querystring'
 
 export function login(username, password) {
   return request({
-    url: '/user/login',
+    url: '/users/login',
     method: 'post',
-    data: {
+    data: querystring.stringify({
       username,
       password
-    }
+    })
   })
 }
 
-export function getInfo(token) {
+export function getInfo(id) {
   return request({
-    url: '/user/info',
-    method: 'get',
-    params: { token }
+    url: '/users/info',
+    method: 'post',
+    data: querystring.stringify({
+      id
+    })
   })
 }
 

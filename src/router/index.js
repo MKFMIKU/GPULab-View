@@ -38,36 +38,45 @@ export const constantRouterMap = [
   },
 
   {
-    path: '/example',
+    path: '/experiment',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
+    redirect: '/experiment',
+    name: 'Experiment',
+    children: [{
+      path: 'experiment',
+      name: '实验',
+      meta: { title: '实验', icon: 'example' },
+      component: () => import('@/views/experiment/index')
+    }]
   },
 
   {
-    path: '/form',
+    path: '/model',
     component: Layout,
+    redirect: '/model/index',
+    name: 'Model',
+    meta: { title: '模型', icon: 'example' },
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'List',
+        component: () => import('@/views/model/index'),
+        meta: { title: '模型列表', icon: 'form' }
+      },
+      {
+        path: 'edit',
+        query: { id: 0 },
+        name: 'Edit',
+        component: () => import('@/views/model/edit'),
+        meta: { title: '编辑器', icon: 'form' }
+      },
+      {
+        path: 'show',
+        name: 'Show',
+        hidden: true,
+        query: { id: 0 },
+        component: () => import('@/views/model/show'),
+        meta: { title: '查看', icon: 'form' }
       }
     ]
   },
